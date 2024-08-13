@@ -16,6 +16,9 @@ converterSection.innerHTML = `
     </select>
     <button id="convertButton">Convertir</button>
     <p id="result"></p>
+    <h3>Historial de conversiones</h3>
+    <ul id="conversionHistory"></ul>
+    <button id="resetHistory">Resetear Historial</button>
 `;
 converterSection.style.display = "none";
 main.appendChild(converterSection);
@@ -31,6 +34,31 @@ const exchangeRates = {
   EUR: { USD: 1.18, ARS: 1500 / 1.18 },
 };
 
+function updateHistory() {
+  const conversionHistory = document.getElementById("conversionHistory");
+  conversionHistory.innerHTML = "";
+
+  const conversions = JSON.parse(localStorage.getItem("conversions")) || [];
+  conversions.forEach((conversion, index) => {
+    const li = document.createElement("li");
+    li.innerText = `${conversion.amount} ${conversion.fromCurrency} = ${conversion.result.toFixed(2)} ${conversion.toCurrency}`;
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "Eliminar";
+    deleteButton.addEventListener("click", () => {
+      deleteConversion(index);
+    });
+    li.appendChild(deleteButton);
+    conversionHistory.appendChild(li);
+  });
+}
+
+function deleteConversion(index) {
+  const conversions = JSON.parse(localStorage.getItem("conversions")) || [];
+  conversions.splice(index, 1);
+  localStorage.setItem("conversions", JSON.stringify(conversions));
+  updateHistory();
+}
+
 function convertCurrency() {
   const amount = document.getElementById("amount").value;
   if (amount > 0) {
@@ -39,28 +67,23 @@ function convertCurrency() {
     const rate = exchangeRates[fromCurrency][toCurrency];
     const result = amount * rate;
 
-    document.getElementById(
-      "result"
-    ).innerText = `${amount} ${fromCurrency} = ${result.toFixed(
-      2
-    )} ${toCurrency}`;
+    document.getElementById("result").innerText = `${amount} ${fromCurrency} = ${result.toFixed(2)} ${toCurrency}`;
 
-    localStorage.setItem(   
-      "lastConversion",
-      JSON.stringify({ amount, fromCurrency, toCurrency, result })
-    );
+    const conversions = JSON.parse(localStorage.getItem("conversions")) || [];
+    conversions.push({ amount, fromCurrency, toCurrency, result });
+    localStorage.setItem("conversions", JSON.stringify(conversions));
+
+    updateHistory();
   } else {
     alert("Error, el monto debe ser positivo");
   }
 }
 
-document
-  .getElementById("convertButton")
-  .addEventListener("click", convertCurrency);
+document.getElementById("convertButton").addEventListener("click", convertCurrency);
 
-const lastConversion = JSON.parse(localStorage.getItem("lastConversion"));
-if (lastConversion) {
-  document.getElementById("result").innerText = `${lastConversion.amount} ${
-    lastConversion.fromCurrency
-  } = ${lastConversion.result.toFixed(2)} ${lastConversion.toCurrency}`;
-}
+document.getElementById("resetHistory").addEventListener("click", () => {
+  localStorage.removeItem("conversions");
+  updateHistory();
+});
+
+updateHistory();  
