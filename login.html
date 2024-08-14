@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank of DPF</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Bank of DPF</div>
+        <nav>
+            <ul>
+                <li><a href="login.html">Online Banking</a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <img src="./img/luxuryBackground.jpg" alt="Fondo de lujo">
+            <div class="hero-content">
+                <h1>Iniciar Sesión</h1>
+                <form action="#" method="post" onsubmit="validateLogin()">
+                    <p>Nombre de usuario</p>
+                    <input type="text" id="userName" name="userName">
+                    <p>Contraseña</p>
+                    <input type="password" id="password" name="password">
+                    <br>
+                    <button type="submit">Iniciar</button>
+                    <br>
+                    <p>¿No tenés una cuenta?</p><a href="register.html">Registrate</a>
+                </form>
+                
+            </div>
+        </section>
+    </main>
+</body>
+</html>
