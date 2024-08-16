@@ -1,53 +1,5 @@
 const transferButtons = document.querySelectorAll('.transfer-button');
 
-function addToHistory(description) {
-    const historyList = document.getElementById('history-list');
-    const listItem = document.createElement('li');
-    listItem.textContent = description;
-    historyList.appendChild(listItem);
-    saveHistory();
-}
-
-function saveHistory() {
-    const items = [];
-    const historyList = document.getElementById('history-list');
-    historyList.querySelectorAll('li').forEach(item => {
-        items.push(item.textContent);
-    });
-    localStorage.setItem('history', JSON.stringify(items));
-}
-
-function loadHistory() {
-    const historyList = document.getElementById('history-list');
-    const savedHistory = JSON.parse(localStorage.getItem('history') || '[]');
-    savedHistory.forEach(item => {
-        const listItem = document.createElement('li');
-        listItem.textContent = item;
-        historyList.appendChild(listItem);
-    });
-}
-
-loadHistory();
-
-const clearHistoryButton = document.getElementById('clear-history');
-clearHistoryButton.addEventListener('click', function() {
-    const historyList = document.getElementById('history-list');
-    historyList.innerHTML = '';
-    localStorage.removeItem('history');
-});
-
-document.querySelectorAll('.action-button').forEach(button => {
-    button.addEventListener('click', function() {
-        addToHistory(`Acción: ${this.textContent} - Fecha: ${new Date().toLocaleString()}`);
-    });
-});
-
-document.querySelectorAll('.action-button').forEach(button => {
-    button.addEventListener('click', function() {
-        addToHistory(`Acción: ${this.textContent} - Fecha: ${new Date().toLocaleString()}`);
-    });
-});
-
 transferButtons.forEach(button => {
     button.addEventListener('click', function () {
         const accountElement = this.closest('.account');
@@ -87,3 +39,52 @@ function generatePDF() {
 
     doc.save('comprobante.pdf');
 }
+
+function addToHistory(description) {
+    const historyList = document.getElementById('history-list');
+    const listItem = document.createElement('li');
+    listItem.textContent = description;
+    historyList.appendChild(listItem);
+    saveHistory();
+}
+
+function saveHistory() {
+    const items = [];
+    const historyList = document.getElementById('history-list');
+    historyList.querySelectorAll('li').forEach(item => {
+        items.push(item.textContent);
+    });
+    localStorage.setItem('history', JSON.stringify(items));
+}
+
+function loadHistory() {
+    const historyList = document.getElementById('history-list');
+    const savedHistory = JSON.parse(localStorage.getItem('history') || '[]');
+    savedHistory.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = item;
+        historyList.appendChild(listItem);
+    });
+}
+
+loadHistory();
+
+const clearHistoryButton = document.getElementById('clear-history');
+
+clearHistoryButton.addEventListener('click', function() {
+    const historyList = document.getElementById('history-list');
+    historyList.innerHTML = '';
+    localStorage.removeItem('history');
+});
+
+document.querySelectorAll('.action-button').forEach(button => {
+    button.addEventListener('click', function() {
+        addToHistory(`Acción: ${this.textContent} - Fecha: ${new Date().toLocaleString()}`);
+    });
+});
+
+document.querySelectorAll('.action-button').forEach(button => {
+    button.addEventListener('click', function() {
+        addToHistory(`Acción: ${this.textContent} - Fecha: ${new Date().toLocaleString()}`);
+    });
+});
