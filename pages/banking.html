@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank of DPF - Homebanking</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/banking.css">
+    <!-- JS -->
+    <script defer src="../js/transf.js"></script>    
+</head>
+<body>
+    <header>
+        <div class="logo">Bank of DPF</div>
+        <nav>
+            <ul>
+                <li><a href="login.html">Online Banking</a></li>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="account-summary">
+            <h2>Mis Cuentas</h2>
+            <div class="account" data-balance="120.01">
+                <h3>Caja de ahorro en pesos</h3>
+                <p>Número: 322-773426/2</p>
+                <p>Saldo: <span class="balance">$120,01</span></p>
+                <button class="action-button transfer-button">Transferir</button>
+                <button class="action-button">Ingresar dinero</button>
+            </div>
+            <div class="account" data-balance="0.00">
+                <h3>Cuenta corriente en pesos</h3>
+                <p>Número: 322-745812/6</p>
+                <p>Saldo: <span class="balance">$0,00</span></p>
+                <button class="action-button transfer-button">Transferir</button>
+                <button class="action-button">Movimientos</button>
+            </div>            
+        </section>
+
+        <section class="cards-summary">
+            <h2>Mis Tarjetas</h2>
+            <div class="card">
+                <h3>Visa Gold</h3>
+                <p>Número: ...2940</p>
+                <p>Saldo: <span class="balance">$0,00</span></p>
+                <button class="action-button">Pagar tarjeta</button>
+                <button class="action-button">Ver consumos</button>
+            </div>
+            <div class="card">
+                <h3>Mastercard Gold</h3>
+                <p>Número: ...2417</p>
+                <p>Saldo: <span class="balance">$0,00</span></p>
+                <button class="action-button">Pagar tarjeta</button>
+                <button class="action-button">Ver consumos</button>
+            </div>
+            <div class="card">
+                <h3>Débito tradicional</h3>
+                <p>Número: ...5728</p>
+                <button class="action-button">Ver consumos</button>
+            </div>
+        </section>
+
+        <section class="menu-cards">
+            <div class="menu-card">
+                <h3>Cuentas</h3>
+                <p>Gestiona todas tus cuentas bancarias desde un solo lugar.</p>
+                <button class="action-button">Ver Cuentas</button>
+            </div>
+            <div class="menu-card">
+                <h3>Tarjetas</h3>
+                <p>Consulta y paga tus tarjetas de crédito y débito.</p>
+                <button class="action-button">Ver Tarjetas</button>
+            </div>
+            <div class="menu-card">
+                <h3>Préstamos</h3>
+                <p>Cotiza y solicita préstamos de forma rápida y sencilla.</p>
+                <button class="action-button">Cotizar Préstamos</button>
+            </div>
+            <div class="menu-card">
+                <h3>Seguros</h3>
+                <p>Protege lo que más valoras con nuestros seguros personalizados.</p>
+                <button class="action-button">Ver Seguros</button>
+            </div>
+            <div class="menu-card">
+                <h3>Perfil</h3>
+                <p>Actualiza tu información personal y preferencias.</p>
+                <button class="action-button">Ver Perfil</button>
+            </div>
+        </section>
+        <section class="history">
+            <h2>Historial de Movimientos</h2>
+            <ul id="history-list">
+            </ul>
+            <button id="clear-history" class="action-button">Borrar Historial</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Bank of DPF. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

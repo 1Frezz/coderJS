@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transferencia - Bank of DPF</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/transf.css">
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script defer src="../js/transf.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">Bank of DPF</div>
+        <nav>
+            <ul>
+                <li><a href="login.html">Online Banking</a></li>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="transfer-section">
+            <h1>Transferir Dinero</h1>
+            <form id="transfer-form">
+                <div class="form-group">
+                    <label for="cbu">CVU/CBU o Alias:</label>
+                    <input type="text" id="cbu" name="cbu" required>
+                </div>
+                <div class="form-group">
+                    <label for="cuit">CUIL/CUIT:</label>
+                    <input type="text" id="cuit" name="cuit" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Monto a Transferir:</label>
+                    <input type="number" id="amount" name="amount" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="destination-name">Nombre de la cuenta destino:</label>
+                    <input type="text" id="destination-name" name="destination-name" value="Jesus Gabriel Jorge" readonly>
+                </div>
+                <button type="button" class="confirm-button">Confirmar Transferencia</button>
+            </form>
+        </section><br>
+    </main>
+</body>
+</html>
